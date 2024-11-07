@@ -1,0 +1,45 @@
+# Ignore build output directories
+/target/
+out/
+
+# Ignore Maven-specific directories and files
+.mvn/
+mvnw
+mvnw.cmd
+
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iml
+*.iws
+
+# Ignore Eclipse project files
+.project
+.classpath
+.settings/
+
+# Ignore NetBeans project files
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Ignore logs
+*.log
+/logs/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Java-specific files
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore reports and test outputs
+/test-output/
+reports/
