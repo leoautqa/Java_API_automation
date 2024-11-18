@@ -43,3 +43,4 @@ Thumbs.db
 # Ignore reports and test outputs
 /test-output/
 reports/
+/bin/

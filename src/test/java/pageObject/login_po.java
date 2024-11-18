@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.*;
 
 import com.github.javafaker.Faker;
 
+import comum.common_steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -64,6 +65,8 @@ public class login_po {
                 .body(requestBody)
                 .when()
                 .post("/login");
+        
+        common_steps.setResponse(response);
     }
     
     @And("Message {} appear")

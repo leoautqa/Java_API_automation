@@ -13,7 +13,7 @@ public class common_steps {
         response = res;
     }
 
-    public static Response getResponse() {
+    public static Response setResponse() {
         return response;
     }
 	
@@ -22,8 +22,12 @@ public class common_steps {
         RestAssured.baseURI = "https://serverest.dev";
     }
     
-    @Then("The status code must be {int}")
+    @Then("The status code must be {}")
     public void the_status_code_must_be(int statusCode) {
     	getResponse().then().statusCode(statusCode);
+    }
+    
+    public static Response getResponse() {
+        return response;
     }
 }
