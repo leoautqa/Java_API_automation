@@ -1,46 +1,50 @@
-# Ignore build output directories
-/target/
-out/
+# Arquivos do Eclipse
+/.settings/
+/.project
+/.classpath
 
-# Ignore Maven-specific directories and files
+# Pastas de compilação
+/target/
+/bin/
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Arquivos de backup do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos gerados pelo Maven
 .mvn/
 mvnw
 mvnw.cmd
 
-# Ignore IntelliJ IDEA project files
+# IntelliJ IDEA (caso alguém use essa IDE no mesmo projeto)
 .idea/
 *.iml
-*.iws
 
-# Ignore Eclipse project files
-.project
-.classpath
-.settings/
-
-# Ignore NetBeans project files
-nbproject/
-build/
-nbbuild/
-dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml
-
-# Ignore logs
-*.log
-/logs/
-
-# Ignore OS-specific files
-.DS_Store
-Thumbs.db
-
-# Ignore Java-specific files
-*.class
-*.jar
-*.war
-*.ear
-
-# Ignore reports and test outputs
+# Arquivos de relatório que podem ser regenerados
+/reports/
 /test-output/
-reports/
-/bin/
+/extent-reports/
+
+# Configurações de ambiente local
+/.vscode/
+/.env
+
+# Bibliotecas baixadas localmente (se estiver usando algo externo manualmente)
+/lib/
+
+# Arquivos do Cucumber
+.cucumber/
+
+# Arquivos JAR gerados
+*.jar
+
+# Cache do sistema operacional
+*.class

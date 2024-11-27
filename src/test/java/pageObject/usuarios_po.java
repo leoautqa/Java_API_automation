@@ -92,8 +92,6 @@ public class usuarios_po {
                 .get("/usuarios/{id}");
     	
     	common_steps.setResponse(response);
-    	
-    	//System.out.println("Response body: " + response.getBody().asString());
     }
         
     @And("Post {} message appear")
@@ -176,7 +174,76 @@ public class usuarios_po {
 	      default:
 	          System.out.println("Feature not recognized. No navigation performed.");
 	          break;
-  	} 
+    	}
+    }
+    
+    @And("Edit {} user")
+    public void edit_user(String action) {
+    	String type = "\"false\"";
+    	
+    	switch (action) {
+	    	case "regular":
+	    			name = name.substring(0, name.length() - 1) + " edit\"";
+				break;
+    		case "null":
+		    	  	name = null;
+					email = null;
+					password = null;
+					type = null;
+	          break;
+	      case "empty":
+		    	    name = "\"\"";
+					email = "\"\"";
+					password = "\"\"";
+					type = "\"\"";
+	            break;
+	      default:
+	          System.out.println("Feature not recognized. No navigation performed.");
+	          break;
+    	}  	 
+    	    	
+    	String payload = "{";
+	    payload += name != null ? "\"nome\": " + name + "," : "\"nome\": null,";
+	    payload += email != null ? "\"email\": " + email + "," : "\"email\": null,";
+	    payload += password != null ? "\"password\": " + password + "," : "\"password\": null,";
+	    payload += type != null ? "\"administrador\": " + type : "\"administrador\": null";
+	    payload += "}";
+				
+	    response = given()
+	            .contentType(ContentType.JSON)
+	            .pathParam("id", id)
+	            .body(payload)
+	            .when()
+	            .put("/usuarios/{id}");
+	    
+	    common_steps.setResponse(response);
+    }
+    
+    @And("Put {} message appear")
+    public void put_message_appear(String message) {
+    	switch (message) {
+	      case "successful":
+	    	  response.then()
+	        		  .body("message", equalTo("Registro alterado com sucesso"));
+	          break;
+	      case "null":
+	    	  response.then()
+		      	      .body("nome", equalTo("nome deve ser uma string"))
+		              .body("email", equalTo("email deve ser uma string"))
+		              .body("password", equalTo("password deve ser uma string"))
+		              .body("administrador", equalTo("administrador deve ser 'true' ou 'false'"));
+	          break;
+	      case "succes":
+	    	  response.then()
+		          	  .body("nome", equalTo("nome não pode ficar em branco"))
+		              .body("email", equalTo("email não pode ficar em branco"))
+		              .body("password", equalTo("password não pode ficar em branco"))
+		              .body("administrador", equalTo("administrador deve ser 'true' ou 'false'"));
+	          break;
+	      default:
+	          System.out.println("Feature not recognized. No navigation performed.");
+	          break;
+    	}
     }
     
 }

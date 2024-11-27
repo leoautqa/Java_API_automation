@@ -64,3 +64,24 @@ Feature: Usuarios
     And       Delete valid user
     Then      The status code must be 200
     And       Delete successful message appear
+    
+  @usu11
+  Scenario: 11 Edit an user
+  	When     Post a regular user
+  	And      Edit regular user
+  	Then     The status code must be 200
+  	And      Put successful message appear
+  
+  @usu12
+  Scenario: 12 Edit an user with null
+  	When     Post a regular user
+  	And      Edit null user
+  	Then     The status code must be 400
+  	And      Put null message appear
+  	
+  @usu13
+  Scenario: 13 Edit an user with empty
+  	When     Post a regular user
+  	And      Edit empty user
+  	Then     The status code must be 400
+  	And      Put empty message appear

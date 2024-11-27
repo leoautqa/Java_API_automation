@@ -1,12 +1,6 @@
 package comum;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
@@ -18,7 +12,6 @@ import io.cucumber.java.AfterAll;
 
 public class hooks {
 
-    public static WebDriver driver;
     private static ExtentTest scenarioNode;
 
     @BeforeAll
@@ -57,27 +50,11 @@ public class hooks {
                 scenarioNode.fail("Test failed with error: " + errorMessage)
                             .fail("Stack trace: " + stackTrace);
 
-                String screenshot = takeScreenshot(driver);
-                scenarioNode.fail("Screenshot at failure",
-                        MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot).build());
             } else {
                 scenarioNode.pass("Test Passed");
             }
-        } catch (WebDriverException e) {
-            System.out.println("WebDriver error in afterScenario: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Error in afterScenario: " + e.getMessage());
-        }
-    }
-
-    public static String takeScreenshot(WebDriver driver) {
-        try {
-            TakesScreenshot ts = (TakesScreenshot) driver;
-            String base64Screenshot = ts.getScreenshotAs(OutputType.BASE64);
-            return base64Screenshot;
-        } catch (Exception e) {
-            System.out.println("Erro ao capturar screenshot: " + e.getMessage());
-            return null;
         }
     }
 
